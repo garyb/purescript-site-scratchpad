@@ -41,3 +41,50 @@ joinPath :: FilePath -> FilePath -> FilePath
 joinPath start end = runFn2 joinPathImpl start end
 ```
 
+## Avoid calling PS code from within JS directly
+
+When implementing things in the FFI, sometimes it's useful to be able to call other functions or make use of data constructors defined in PureScript. For example, if you wanted to write a function that returned a `Maybe` you might do something like this:
+
+``` haskell
+foreign import doSomethingImpl
+  "function doSomethingImpl(fn, x) {
+  \  if (fn(x)) {\
+  \    return Data_Maybe.Just.create(x);\
+  \  } else {\
+  \    return Data_Maybe.Nothing.value;\
+  \  }\
+  \}" :: forall a. Fn2 (a -> Boolean) a (Maybe a)
+
+doSomething :: forall a. (a -> Boolean) -> a -> Maybe a
+doSomething fn x = runFn2 doSomethingImpl fn x
+```
+
+Calling these functions directly in the FFI code isn't recommended as it makes the code brittle to changes in the code generator. Additionally, doing this can cause problems when using the `--module` compiler argument, as dead code elimination may remove the functions you're calling - the compiler doesn't attempt to read inline JavaScript FFI definitions.
+
+A technique for working around this is to add extra arguments to your FFI-defined function to accept the functions you need to call as arguments:
+
+``` haskell
+foreign import doSomethingImpl
+  "function doSomethingImpl(just, nothing, fn, value) {
+  \  if (fn(value)) {\
+  \    return just(value);\
+  \  } else {\
+  \    return nothing;\
+  \  }\
+  \}" :: forall a. Fn4 (a -> Maybe a) (Maybe a) (a -> Boolean) a (Maybe a)
+
+doSomething :: forall a. (a -> Boolean) -> a -> Maybe a
+doSomething fn x = runFn2 doSomethingImpl Just Nothing fn x
+```
+
+This way the compiler knows `Just` and `Nothing` are used so you don't need to worry about dead code elimination swiping them away, and also you don't have to deal with any future changes that may happen to the way code is generated for data constructors in the generated output.
+
+(((also useful for avoiding typeclass constraints)))
+
+## Making a normal JavaScript function an Eff
+
+(((return/pure \_ -> ... etc or just the extra function)))
+
+## Why doesn't my Eff work when passed to a normal JS function?
+
+(((Event listeners not calling the "extra" () etc)))
