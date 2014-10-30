@@ -78,7 +78,7 @@ However in PureScript this only introduces a `Point` constructor that accepts an
 type Point' = { x :: Number, y :: Number }
 ```
 
-Objects are constructed with syntax similar to that of JavaScript (and the type defintion):
+Objects are constructed with syntax similar to that of JavaScript (and the type definition):
 
 ``` haskell
 origin :: Point'
@@ -90,6 +90,20 @@ And instead of introducing `x` and `y` accessor functions, `x` and `y` can be re
 ``` haskell
 originX :: Number
 originX  = origin.x
+```
+
+A common mistake to look out for is when writing a function that accepts a data type like the original `Point` above, is that the object is still wrapped inside `Point` so something this will fail:
+
+``` haskell
+showPoint :: Point -> String
+showPoint p = show p.x ++ ", " ++ show p.y
+```
+
+Instead we need to destructure `Point` to get at the object:
+
+``` haskell
+showPoint :: Point -> String
+showPoint (Point obj) = show obj.x ++ ", " ++ show obj.y
 ```
 
 ## Typeclasses
