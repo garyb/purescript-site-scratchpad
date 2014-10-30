@@ -32,7 +32,7 @@ ap :: forall m a b. (Monad m) => m (a -> b) -> m a -> m b
 
 ### Numbers
 
-There is only a single native `Number` type which represents JavaScript's standard IEEE 754 float.
+There is currently only a single native `Number` type which represents JavaScript's standard IEEE 754 float.
 
 ### Unit
 
@@ -58,8 +58,39 @@ For more details about using Eff, how it works, and how to define your own side 
 
 ## Records
 
-- Objects
-- Dctor with object /= haskell record
+PureScript can encode JavaScript-style objects directly by using row types, so Haskell-style record definitions actually have quite a different meaning in PureScript:
+
+``` haskell
+data Point = Point { x :: Number, y :: Number }
+```
+
+In Haskell a definition like this would introduce several things to the current environment:
+
+``` haskell
+Point :: Number -> Number -> Point
+x :: Point -> Number
+y :: Point -> Number
+```
+
+However in PureScript this only introduces a `Point` constructor that accepts an object type. In fact, often we might not need a data constructor at all when using object types:
+
+``` haskell
+type Point' = { x :: Number, y :: Number }
+```
+
+Objects are constructed with syntax similar to that of JavaScript (and the type defintion):
+
+``` haskell
+origin :: Point'
+origin = { x: 0, y: 0 }
+```
+
+And instead of introducing `x` and `y` accessor functions, `x` and `y` can be read like JavaScript properties:
+
+``` haskell
+originX :: Number
+originX  = origin.x
+```
 
 ## Typeclasses
 
