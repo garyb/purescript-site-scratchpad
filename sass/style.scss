@@ -52,7 +52,7 @@ header {
     color: #fff;
     text-decoration: none;
     opacity: 0.6;
-    font-weight: 400;
+    font-weight: 300;
   }
 
   a:hover, a.active {
@@ -70,7 +70,7 @@ header {
 
     h2 {
       font-size: 12px;
-      font-weight: 400;
+      font-weight: 300;
       cursor: pointer;
       margin: 0;
     }
@@ -181,17 +181,6 @@ main section.intro {
       font-weight: 700;
       text-decoration: none;
       text-transform: uppercase;
-    }
-
-    &.more {
-      margin-top: 30px;
-      float: right;
-
-      a {
-        background: url(../img/icon-chevron.png) no-repeat left;
-        background-size: 7px 10px;
-        padding-left: 17px;
-      }
     }
 
     &.install {
@@ -371,6 +360,10 @@ footer {
     float: left;
   }
 
+  main section.intro .link.install {
+    display: inline-block;
+  }
+
   main section.features ul li:nth-child(n+1) {
     display: block;
   }
@@ -390,14 +383,6 @@ footer {
 }
 
 @media (min-width: 700px) {
-
-  main section.intro .link.more {
-    display: none;
-  }
-
-  main section.intro .link.install {
-    display: inline-block;
-  }
 
   main section.features ul {
     @include column-count(3);
