@@ -58,6 +58,8 @@
 
     <section class="example">
       <h3>Example</h3>
+      <div class="current">
+        <h4>Typeclasses</h4>
 <pre>
 module Main where
 
@@ -83,6 +85,63 @@ instance showArray :: (Show a) => Show [a] where
 
 test = show [true, false]
 </pre>
+      </div>
+      <div>
+        <h4>Operators</h4>
+<pre>
+module Main where
+
+import Prelude ()
+
+infixl 5 >>>
+
+(>>>) :: forall a b c. (a -> b) -> (b -> c) -> a -> c
+(>>>) f g a = g (f a)
+
+foreign import foo :: String -> Number
+foreign import bar :: Number -> Boolean
+
+test = foo >>> bar
+</pre>
+      </div>
+      <div>
+        <h4>FFI</h4>
+<pre>
+module Main where
+
+import Control.Monad.Eff
+
+foreign import data Random :: !
+
+foreign import random """
+  function random() {
+    return Math.random();
+  }""" :: Eff (random :: Random) Number
+
+main = Debug.Trace.print &lt;$> random
+</pre>
+      </div>
+      <div>
+        <h4>Mutable variables</h4>
+<pre>
+module Main where
+
+import Prelude
+import Control.Monad.Eff
+import Control.Monad.ST
+
+collatz :: Number -> Number
+collatz n = runPure (runST (do
+  r &lt;- newSTRef n
+  count &lt;- newSTRef 0
+  untilE $ do
+    modifySTRef count $ (+) 1
+    m &lt;- readSTRef r
+    writeSTRef r $ if m % 2 == 0 then m / 2 else 3 * m + 1
+    return $ m == 1
+  readSTRef count))
+</pre>
+      </div>
     </section>
 
   </main>

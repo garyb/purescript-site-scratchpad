@@ -21,4 +21,23 @@ $(function () {
 
   $featureList.append($more);
 
+  // --------------------------------------------------------------------------
+
+  var $examples = $("section.example div");
+  var $exampleSelectContainer = $("<div>").addClass("select-wrap");
+  var $exampleSelect = $("<select/>");
+  $exampleSelectContainer.append($exampleSelect);
+
+  $examples.each(function () {
+    var title = $(this).find("h4").text();
+    $exampleSelect.append("<option>" + title + "</option>");
+  });
+
+  $exampleSelect.on("change", function (e) {
+    $examples.removeClass("current");
+    $examples.eq(this.selectedIndex).addClass("current");
+  });
+
+  $("section.example").prepend($exampleSelectContainer);
+
 });
