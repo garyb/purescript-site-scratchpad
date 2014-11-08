@@ -51,11 +51,17 @@ header {
   a {
     color: #fff;
     text-decoration: none;
+    opacity: 0.6;
+    font-weight: 400;
+  }
+
+  a:hover, a.active {
+    opacity: 1;
   }
 
   nav {
     position: absolute;
-    top: 45px;
+    top: 47px;
     right: 30px;
     margin: 0;
     text-transform: uppercase;
@@ -139,7 +145,7 @@ main section {
   }
 
   > ul {
-    margin: 30px 20px 0;
+    margin: 0px 20px 0;
   }
 }
 
@@ -211,8 +217,10 @@ main section.features {
     padding: 0;
     list-style: none;
     color: #4d4d4d;
+    margin-top: -10px;
 
     li {
+      font-size: 18px;
       margin-top: 14px;
 
       &:nth-child(n+5) {
@@ -260,6 +268,7 @@ ul.cards {
 
     h3 {
       font-size: 28px;
+      line-height: 125%;
       font-weight: 300;
       margin: 0;
     }
