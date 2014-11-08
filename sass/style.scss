@@ -22,6 +22,7 @@ body {
 pre, code {
   font-family: DejaVu Sans Mono, Menlo, Consolas, monospace;
   font-size: 12px;
+  line-height: 135%;
 }
 
 /* ------------------------------------------------------------------------- */
@@ -86,17 +87,43 @@ main {
     color: $link-colour;
   }
 
+  pre {
+    background: #fff;
+    padding: 20px;
+  }
+
+  .codeblock {
+    background: #fff;
+  }
+
+  .codeblock pre {
+    max-width: 600px;
+    margin: auto;
+  }
+
   code {
     display: inline-block;
-    background: #eee;
-    font-size: 14px;
-    padding: 2px 4px;
+    background: #fff;
+    font-size: 13px;
+    padding: 0px 6px;
   }
 }
 
 main section {
   padding: 50px 10px;
   overflow: hidden;
+
+  > * {
+    box-sizing: border-box;
+  }
+
+  > p, li {
+    font-size: 16px;
+    line-height: 150%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
   > h2 {
     font-size: 28px;
@@ -114,6 +141,14 @@ main section {
   > ul {
     margin: 30px 20px 0;
   }
+}
+
+main section+section {
+  padding: 0px 10px 50px;
+}
+
+.home main section+section {
+  padding: 50px 10px;
 }
 
 /* ------------------------------------------------------------------------- */
@@ -202,7 +237,6 @@ main section.features {
 main section.example pre {
   background: #f5f5f5;
   border-top: 1px solid #e5e5e5;
-  padding: 20px;
 }
 
 /* ------------------------------------------------------------------------- */
@@ -376,7 +410,8 @@ footer {
   main section > h2,
   main section > h3,
   main section > ul,
-  main section > pre {
+  main section > pre,
+  main section > div {
     margin-left: auto;
     margin-right: auto;
     max-width: 800px;

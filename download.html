@@ -12,7 +12,7 @@
 
 </head>
 
-<body>
+<body class="download">
 
   <header>
     <div class="wrap">
@@ -33,7 +33,44 @@
 
     <section>
 
-      <h2>Download</h2>
+      <h2>Binaries</h2>
+
+      <p>Precompiled binaries are available for OSX, Linux, and Windows from the <a href="https://github.com/purescript/purescript/releases/latest">latest release page on GitHub</a>.</p>
+
+    </section>
+
+    <section>
+
+      <h2>Cabal</h2>
+
+      <p>If you already have the <a href="https://www.haskell.org/platform">Haskell Platform</a> 2014 or <a href="https://www.haskell.org/ghc/">GHC</a> 7.8 installed then PureScript can be installed using Cabal:</p>
+
+      <div class="codeblock">
+<pre>
+cabal update
+cabal install purescript
+</pre>
+      </div>
+
+    </section>
+
+    <section>
+
+      <h2>Building from source</h2>
+
+      <p>For the most up-to-date (potentially unstable) version of the compiler the code is <a href="https://github.com/purescript/purescript">available on GitHub</a>:</p>
+
+      <div class="codeblock">
+<pre>
+git clone https://github.com/purescript/purescript.git
+cd purescript
+cabal sandbox init
+cabal update
+cabal install
+</pre>
+      </div>
+
+      <p>The <code>cabal sandbox init</code> step is optional but recommended to avoid problems with dependencies. When using a sandbox <code>cabal install</code> will put the compiled binaries into <code>./.cabal-sandbox/bin/</code> rather than the global Cabal <code>bin</code> directory.</p>
 
     </section>
 
