@@ -19,7 +19,7 @@ body {
   }
 }
 
-pre {
+pre, code {
   font-family: DejaVu Sans Mono, Menlo, Consolas, monospace;
   font-size: 12px;
 }
@@ -58,11 +58,12 @@ header {
     right: 30px;
     margin: 0;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 12px;
+    letter-spacing: 1px;
 
     h2 {
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 400;
       cursor: pointer;
       margin: 0;
     }
@@ -79,6 +80,19 @@ header {
 /* ------------------------------------------------------------------------- */
 /* ------------------------------------------------------------------------- */
 /* ------------------------------------------------------------------------- */
+
+main {
+  a {
+    color: $link-colour;
+  }
+
+  code {
+    display: inline-block;
+    background: #eee;
+    font-size: 14px;
+    padding: 2px 4px;
+  }
+}
 
 main section {
   padding: 50px 10px;
@@ -198,17 +212,17 @@ main section.example pre {
 ul.cards {
   list-style: none;
   padding: 0;
-  @include column-count(3);
-  @include column-gap(15px);
 
   li {
     position: relative;
-    margin: 0 0 15px 0;
+    float: left;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 15px 15px 0;
     padding: 20px;
     display: block;
-    min-height: 300px;
+    min-height: 320px;
     background: #fff;
-    @include break-inside(avoid);
 
     h3 {
       font-size: 28px;
@@ -216,7 +230,7 @@ ul.cards {
       margin: 0;
     }
 
-    a {
+    > a {
       display: block;
       padding: 10px 0;
       text-transform: uppercase;
@@ -309,7 +323,7 @@ footer {
   }
 
   nav ul li {
-    font-size: 14px;
+    /*font-size: 14px;*/
     margin: 0 0 0 25px;
     float: left;
   }
@@ -326,6 +340,10 @@ footer {
     @include column-count(2);
   }
 
+  ul.cards li {
+    width: calc(50% - 15px)
+  }
+
 }
 
 @media (min-width: 700px) {
@@ -340,6 +358,10 @@ footer {
 
   main section.features ul {
     @include column-count(3);
+  }
+
+  ul.cards li {
+    width: calc(33% - 15px);
   }
 
 }
