@@ -253,6 +253,7 @@ main section.example {
   }
 
   div.nav {
+    display: none;
     text-align: right;
 
     a#next-example {
@@ -410,6 +411,9 @@ footer {
       &.current {
         display: block;
       }
+    }
+    > div.nav {
+      display: block;
     }
     pre {
       height: 250px;
