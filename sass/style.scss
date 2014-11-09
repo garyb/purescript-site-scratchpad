@@ -280,6 +280,19 @@ main section.example {
       text-decoration: none;
       font-size: 14px;
       font-weight: 800;
+
+      &.next {
+        padding-right: 12px;
+        background: url(../img/icon-chevron.png) no-repeat right;
+        background-size: 7px 10px;
+      }
+
+      &.prev {
+        padding-left: 12px;
+        background: url(../img/icon-chevron-left.png) no-repeat left;
+        background-size: 7px 10px;
+      }
+      margin-bottom: 6px;
     }
 
     overflow: hidden;
