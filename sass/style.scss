@@ -1,5 +1,6 @@
 @import "normalize-3.0.1";
 @import "compass/css3/columns";
+@import "compass/typography/lists/inline-list";
 
 $link-colour: #c4953a;
 
@@ -235,7 +236,7 @@ main section.example {
 
   position: relative;
 
-  pre {
+  pre, p {
     background: #f5f5f5;
     border-top: 1px solid #e5e5e5;
   }
@@ -246,17 +247,21 @@ main section.example {
     color: #4d4d4d;
   }
 
-  .select-wrap {
-    display: none;
-    font-size: 14px;
-
-    select {
-      position: absolute;
-      top: 4px;
-      right: 0px;
-    }
+  p {
+    padding: 30px;
+    font-size: 16px;
   }
 
+  div.nav {
+    display: none;
+    text-align: right;
+
+    a#next-example {
+      text-transform: uppercase;
+      text-decoration: none;
+      font-size: 18px;
+    }
+  }
 }
 
 /* ------------------------------------------------------------------------- */
@@ -400,22 +405,18 @@ footer {
   }
 
   main section.example {
-    h4 {
-      display: none;
-    }
-    > div {
+    > div.example {
       display: none;
 
       &.current {
         display: block;
       }
     }
-    div.select-wrap {
-      position: relative;
+    > div.nav {
       display: block;
-      max-width: 800px;
-      margin: auto;
-      text-align: right;
+    }
+    pre {
+      height: 250px;
     }
   }
 
