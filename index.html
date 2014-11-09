@@ -70,7 +70,7 @@ doc = div [ _class := "image" ] $ do
              , height := 200
              ]
   text "Functional programming for the web!"</pre>
-	<p>PureScript's expressive type system and lightweight syntax make it simple to define <a href="https://leanpub.com/purescript/read#leanpub-auto-domain-specific-languages" target="_blank">domain-specific languages</a>, which can be used to solve problems like templating the DOM. Bindings also exist for libraries such as React and Angular.js.</p>
+	<p>PureScript's expressive type system and lightweight syntax make it simple to define <a href="https://leanpub.com/purescript/read#leanpub-auto-domain-specific-languages">domain-specific languages</a>, which can be used to solve problems like templating the DOM. Bindings also exist for libraries such as React and Angular.js.</p>
       </div>
       <div class="example">
         <h4>HTML5 Canvas</h4>
@@ -101,7 +101,7 @@ main = do
   context &lt;- getContext2D canvas
 
   runGraphics context scene</pre>
-	<p>Higher-order functions allow the developer to write fluent, expressive code. Here, higher-order functions are being used to capture some common patterns when <a href="https://leanpub.com/purescript/read#leanpub-auto-canvas-graphics" target="_blank">working with the canvas</a>, such as saving and restoring the context and drawing closed paths.</p>
+	<p>Higher-order functions allow the developer to write fluent, expressive code. Here, higher-order functions are being used to capture some common patterns when <a href="https://leanpub.com/purescript/read#leanpub-auto-canvas-graphics">working with the canvas</a>, such as saving and restoring the context and drawing closed paths.</p>
 
       </div>
       <div class="example">
@@ -127,7 +127,7 @@ view (Model ps cs) = do
 
 main :: App Unit
 main = loadModel `runContT` view</pre>
-      <p>The problem of <a href="https://leanpub.com/purescript/read#leanpub-auto-callback-hell" target="_blank">callback hell</a> can be solved by using PureScript's type system to capture complex control flow as functions in a safe way. Here, the continuation monad is used to hide the boilerplate code associated with handling callbacks.</p>
+      <p>The problem of <a href="https://leanpub.com/purescript/read#leanpub-auto-callback-hell">callback hell</a> can be solved by using PureScript's type system to capture complex control flow as functions in a safe way. Here, the continuation monad is used to hide the boilerplate code associated with handling callbacks.</p>
       </div>
       <div class="example">
         <h4>Generative Testing</h4>
@@ -138,7 +138,7 @@ main = do
     isSorted $ merge (sort xs) (sort ys)
   quickCheck $ \xs ys ->
     xs `isSubarrayOf` merge xs ys</pre>
-      <p>PureScript provides a form of ad-hoc polymorphism in the form of type classes, inspired by Haskell. Type classes are used in the QuickCheck and StrongCheck libraries to support <a href="https://leanpub.com/purescript/read#leanpub-auto-generative-testing" target="_blank">generative testing</a>, which separates test definitions from the generation of test cases.</p>
+      <p>PureScript provides a form of ad-hoc polymorphism in the form of type classes, inspired by Haskell. Type classes are used in the QuickCheck and StrongCheck libraries to support <a href="https://leanpub.com/purescript/read#leanpub-auto-generative-testing">generative testing</a>, which separates test definitions from the generation of test cases.</p>
       </div>
 
       <div class="nav">
@@ -158,8 +158,8 @@ main = do
 	<li><a href="articles.html">Articles</a></li>
       </ul>
       <ul class="external">
-        <li class="github"><a href="https://github.com/purescript/purescript" target="_blank" title="GitHub">GitHub</a></li>
-        <li class="twitter"><a href="https://twitter.com/purescript" target="_blank" title="Twitter">Twitter</a></li>
+        <li class="github"><a href="https://github.com/purescript/purescript" title="GitHub">GitHub</a></li>
+        <li class="twitter"><a href="https://twitter.com/purescript" title="Twitter">Twitter</a></li>
       </ul>
     </nav>
   </footer>
