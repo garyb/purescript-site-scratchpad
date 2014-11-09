@@ -18,7 +18,7 @@ $(function () {
   $more.on("click", function () {
     $featureList.toggleClass("expanded");
     $more.html($featureList.is(".expanded") ? "&hellip;Less" : "More&hellip;");
-    // TODO: scroll to top of feature list if off screen after collapse
+    // TODO: scroll to top of feature list if offscreen after collapse
   });
 
   $featureList.append($more);
@@ -33,16 +33,8 @@ $(function () {
     return function (e) {
       var index = $examples.filter(".current").index();
       var nextIndex = (index - 1 + delta) % $examples.length;
-
-      var origSize = $examples.filter(".current").height();
-      var origScroll = $window.scrollTop();
-
       $examples.removeClass("current");
       $examples.eq(nextIndex).addClass("current");
-
-      var newSize = $examples.filter(".current").height();
-      //$window.scrollTop(origScroll + newSize - origSize);
-
       e.preventDefault();
     };
   };
