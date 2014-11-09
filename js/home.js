@@ -23,7 +23,7 @@ $(function () {
 
   // --------------------------------------------------------------------------
 
-  var $examples = $("section.example div");
+  var $examples = $("section.example div.example");
   var $next = $("section.example #next-example");
 
   $next.on("click", function (e) {

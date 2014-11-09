@@ -236,7 +236,7 @@ main section.example {
 
   position: relative;
 
-  pre {
+  pre, p {
     background: #f5f5f5;
     border-top: 1px solid #e5e5e5;
   }
@@ -247,15 +247,18 @@ main section.example {
     color: #4d4d4d;
   }
 
-  nav {
-    max-width: 600px;
-    margin: 0 auto;
+  p {
+    padding: 30px;
+    font-size: 16px;
+  }
+
+  div.nav {
+    text-align: right;
 
     a#next-example {
-      float: right;
       text-transform: uppercase;
       text-decoration: none;
-      font-size: 14px;
+      font-size: 18px;
     }
   }
 }
@@ -401,7 +404,7 @@ footer {
   }
 
   main section.example {
-    > div {
+    > div.example {
       display: none;
 
       &.current {
@@ -410,13 +413,6 @@ footer {
     }
     pre {
       height: 250px;
-    }
-    div.select-wrap {
-      position: relative;
-      display: block;
-      max-width: 800px;
-      margin: auto;
-      text-align: right;
     }
   }
 
