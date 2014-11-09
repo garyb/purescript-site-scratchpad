@@ -148,8 +148,8 @@ main section {
     font-size: 16px;
     line-height: 150%;
     max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 
   > h2 {
@@ -261,12 +261,20 @@ main section.example {
     border-top: 1px solid #e5e5e5;
   }
 
-  p {
+  h4, p {
     font-size: 16px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  h4 {
+    margin-top: 50px;
   }
 
   div.nav {
-    /*display: none;*/
+    display: none;
+
+    margin: 0 20px;
 
     .prev {
       float: left;
@@ -441,6 +449,11 @@ footer {
   }
 
   main section.example {
+
+    h4 {
+      display: none;
+    }
+
     > div.example {
       display: none;
 
@@ -448,7 +461,8 @@ footer {
         display: block;
       }
     }
-    > div.nav {
+
+    div.nav {
       display: block;
     }
   }
@@ -486,6 +500,13 @@ footer {
     margin-left: auto;
     margin-right: auto;
     max-width: 800px;
+  }
+
+  main section.example {
+    h4, p, div.nav {
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 
 }
