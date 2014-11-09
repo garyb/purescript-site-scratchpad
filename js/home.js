@@ -26,8 +26,8 @@ $(function () {
   // --------------------------------------------------------------------------
 
   var $examples = $("section.example div.example");
-  var $prev = $("section.example #prev-example");
-  var $next = $("section.example #next-example");
+  var $prev = $("section.example a.prev");
+  var $next = $("section.example a.next");
 
   var go = function (delta) {
     return function (e) {
@@ -41,7 +41,7 @@ $(function () {
       $examples.eq(nextIndex).addClass("current");
 
       var newSize = $examples.filter(".current").height();
-      $window.scrollTop(origScroll + newSize - origSize);
+      //$window.scrollTop(origScroll + newSize - origSize);
 
       e.preventDefault();
     };
