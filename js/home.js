@@ -1,5 +1,7 @@
 $(function () {
 
+  var $window = $(window);
+
   var $menuButton = $("nav h2");
 
   $menuButton.on("click", function () {
@@ -24,16 +26,28 @@ $(function () {
   // --------------------------------------------------------------------------
 
   var $examples = $("section.example div.example");
+  var $prev = $("section.example #prev-example");
   var $next = $("section.example #next-example");
 
-  $next.on("click", function (e) {
-    var index = $examples.filter(".current").index();
-    var nextIndex = index % $examples.length;
+  var go = function (delta) {
+    return function (e) {
+      var index = $examples.filter(".current").index();
+      var nextIndex = (index - 1 + delta) % $examples.length;
 
-    $examples.removeClass("current");
-    $examples.eq(nextIndex).addClass("current");
-    
-    e.preventDefault();
-  });
+      var origSize = $examples.filter(".current").height();
+      var origScroll = $window.scrollTop();
+
+      $examples.removeClass("current");
+      $examples.eq(nextIndex).addClass("current");
+
+      var newSize = $examples.filter(".current").height();
+      $window.scrollTop(newSize - origSize);
+
+      e.preventDefault();
+    };
+  };
+
+  $prev.on("click", go(-1));
+  $next.on("click", go(1));
 
 });
