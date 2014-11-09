@@ -239,6 +239,7 @@ main section.example {
   pre {
     background: #f5f5f5;
     border-top: 1px solid #e5e5e5;
+    height: 250px;
   }
 
   h4 {
@@ -407,6 +408,9 @@ footer {
       &.current {
         display: block;
       }
+    }
+    pre {
+      height: auto;
     }
     div.select-wrap {
       position: relative;
