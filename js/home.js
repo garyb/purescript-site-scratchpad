@@ -41,7 +41,7 @@ $(function () {
       $examples.eq(nextIndex).addClass("current");
 
       var newSize = $examples.filter(".current").height();
-      $window.scrollTop(newSize - origSize);
+      $window.scrollTop(origScroll + newSize - origSize);
 
       e.preventDefault();
     };
