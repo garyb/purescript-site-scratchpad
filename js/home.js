@@ -24,20 +24,16 @@ $(function () {
   // --------------------------------------------------------------------------
 
   var $examples = $("section.example div");
-  var $exampleSelectContainer = $("<div>").addClass("select-wrap");
-  var $exampleSelect = $("<select/>");
-  $exampleSelectContainer.append($exampleSelect);
+  var $next = $("section.example #next-example");
 
-  $examples.each(function () {
-    var title = $(this).find("h4").text();
-    $exampleSelect.append("<option>" + title + "</option>");
-  });
+  $next.on("click", function (e) {
+    var index = $examples.filter(".current").index();
+    var nextIndex = index % $examples.length;
 
-  $exampleSelect.on("change", function (e) {
     $examples.removeClass("current");
-    $examples.eq(this.selectedIndex).addClass("current");
+    $examples.eq(nextIndex).addClass("current");
+    
+    e.preventDefault();
   });
-
-  $("section.example").prepend($exampleSelectContainer);
 
 });

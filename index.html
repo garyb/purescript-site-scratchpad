@@ -57,91 +57,92 @@
     </section>
 
     <section class="example">
-      <h3>Example</h3>
+      <h3>Examples</h3>
       <div class="current">
-        <h4>Typeclasses</h4>
-<pre>
-module Main where
-
-import Prelude ((++))
-
-class Show a where
-  show :: a -> String
-
-instance showString :: Show String where
-  show s = s
-
-instance showBoolean :: Show Boolean where
-  show true = "true"
-  show false = "false"
-
-instance showArray :: (Show a) => Show [a] where
-  show arr = "[" ++ go arr ++ "]"
-    where
-    go :: forall a. (Show a) => [a] -> String
-    go [] = ""
-    go [x] = show x
-    go (x:xs) = show x ++ ", " ++ go xs
-
-test = show [true, false]
-</pre>
+        <h4>Modifying the DOM</h4>
+<pre>import Data.DOM.Free
+ 
+doc :: Element
+doc = div [ _class := "image" ] $ do
+  elem $ img [ src := "logo.jpg"
+             , width  := 100
+             , height := 200  
+             ]
+  text "Functional programming for the web!"</pre>
+	<p>PureScript's expressive type system and lightweight syntax make it simple to define <a href="https://leanpub.com/purescript/read#leanpub-auto-domain-specific-languages" target="_blank">domain-specific languages</a>, which can be used to solve problems like templating the DOM. Bindings also exist for libraries such as React and Angular.js.</p>	
       </div>
       <div>
-        <h4>Operators</h4>
-<pre>
-module Main where
-
-import Prelude ()
-
-infixl 5 >>>
-
-(>>>) :: forall a b c. (a -> b) -> (b -> c) -> a -> c
-(>>>) f g a = g (f a)
-
-foreign import foo :: String -> Number
-foreign import bar :: Number -> Boolean
-
-test = foo >>> bar
-</pre>
+        <h4>HTML5 Canvas</h4>
+<pre>module Main where
+ 
+import Control.Apply
+ 
+import Graphics.Canvas (getCanvasElementById, getContext2D)
+import Graphics.Canvas.Free
+ 
+closed path = beginPath *> path <* closePath
+  
+filled shape = shape <* fill 
+ 
+withContext shape = save *> shape <* restore
+ 
+scene :: Graphics Unit
+scene = withContext do
+  setFillStyle "#FF0000"
+ 
+  filled $ closed do
+    moveTo 0 0
+    lineTo 50 0
+    lineTo 25 50
+ 
+main = do
+  canvas <- getCanvasElementById "canvas"
+  context <- getContext2D canvas
+ 
+  runGraphics context scene</pre>
+	<p>Higher-order functions allow the developer to write fluent, expressive code. Here, higher-order functions are being used to capture some common patterns when <a href="https://leanpub.com/purescript/read#leanpub-auto-canvas-graphics" target="_blank">working with the canvas</a>, such as saving and restoring the context and drawing closed paths.</p>
+	
       </div>
       <div>
-        <h4>FFI</h4>
-<pre>
-module Main where
-
+        <h4>Callback Hell</h4>
+<pre>import DOM
 import Control.Monad.Eff
-
-foreign import data Random :: !
-
-foreign import random """
-  function random() {
-    return Math.random();
-  }""" :: Eff (random :: Random) Number
-
-main = Debug.Trace.print &lt;$> random
-</pre>
+import Control.Monad.Cont.Trans
+ 
+type App = Eff (dom :: DOM, ajax :: AJAX)
+ 
+data Model = Model [Product] [ProductCategory]
+ 
+loadModel :: ContT Unit App Model
+loadModel = do
+  model <- runParallel $
+    Model <$> Parallel (get "/products/popular/")
+          <*> Parallel (get "/categories/all")
+ 
+view :: Model -> App Unit
+view (Model ps cs) = do
+  renderProducts ps
+  renderCategories cs
+ 
+main :: App Unit
+main = loadModel `runContT` view</pre>
+      <p>The problem of <a href="https://leanpub.com/purescript/read#leanpub-auto-callback-hell" target="_blank">callback hell</a> can be solved by using PureScript's type system to capture complex control flow as functions in a safe way. Here, the continuation monad is used to hide the boilerplate code associated with handling callbacks.</p>
       </div>
       <div>
-        <h4>Mutable variables</h4>
-<pre>
-module Main where
-
-import Prelude
-import Control.Monad.Eff
-import Control.Monad.ST
-
-collatz :: Number -> Number
-collatz n = runPure (runST (do
-  r &lt;- newSTRef n
-  count &lt;- newSTRef 0
-  untilE $ do
-    modifySTRef count $ (+) 1
-    m &lt;- readSTRef r
-    writeSTRef r $ if m % 2 == 0 then m / 2 else 3 * m + 1
-    return $ m == 1
-  readSTRef count))
-</pre>
+        <h4>Generative Testing</h4>
+<pre>import Test.QuickCheck
+ 
+main = do
+  quickCheck $ \xs ys -> 
+    isSorted $ merge (sort xs) (sort ys)
+  quickCheck $ \xs ys -> 
+    xs `isSubarrayOf` merge xs ys</pre>
+      <p>PureScript provides a form of ad-hoc polymorphism in the form of type classes, inspired by Haskell. Type classes are used in the QuickCheck and StrongCheck libraries to support <a href="https://leanpub.com/purescript/read#leanpub-auto-generative-testing" target="_blank">generative testing</a>, which separates test definitions from the generation of test cases.</p>
       </div>
+  
+      <nav>
+        <a id="next-example" href="#">Next Example</a>
+      </nav>
     </section>
 
   </main>

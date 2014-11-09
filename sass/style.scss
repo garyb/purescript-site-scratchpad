@@ -1,5 +1,6 @@
 @import "normalize-3.0.1";
 @import "compass/css3/columns";
+@import "compass/typography/lists/inline-list";
 
 $link-colour: #c4953a;
 
@@ -246,17 +247,17 @@ main section.example {
     color: #4d4d4d;
   }
 
-  .select-wrap {
-    display: none;
-    font-size: 14px;
+  nav {
+    max-width: 600px;
+    margin: 0 auto;
 
-    select {
-      position: absolute;
-      top: 4px;
-      right: 0px;
+    a#next-example {
+      float: right;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-size: 14px;
     }
   }
-
 }
 
 /* ------------------------------------------------------------------------- */
@@ -400,9 +401,6 @@ footer {
   }
 
   main section.example {
-    h4 {
-      display: none;
-    }
     > div {
       display: none;
 
