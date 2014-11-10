@@ -354,7 +354,8 @@ ul.cards {
       text-transform: uppercase;
       font-size: 14px;
       text-align: right;
-      font-weight: 700;
+      font-weight: 800;
+      letter-spacing: 1px;
       color: $link-colour;
       text-decoration: none;
       border-top: 1px solid $link-colour;
@@ -514,6 +515,10 @@ footer {
   main section.intro {
     margin: 30px auto;
     max-width: 800px;
+
+    h2 {
+      font-size: 28px;
+    }
   }
 
   main section > h2,
