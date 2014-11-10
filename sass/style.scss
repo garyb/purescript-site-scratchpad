@@ -46,6 +46,10 @@ pre {
 
 }
 
+a {
+  text-decoration: none;
+}
+
 /* ------------------------------------------------------------------------- */
 /* ------------------------------------------------------------------------- */
 /* ------------------------------------------------------------------------- */
@@ -269,6 +273,7 @@ main section.example {
     font-size: 16px;
     margin-left: 20px;
     margin-right: 20px;
+    line-height: 150%;
   }
 
   p {
@@ -282,7 +287,7 @@ main section.example {
   div.nav {
     display: none;
 
-    margin: 0 20px;
+    margin: 30px 20px 0;
 
     .prev {
       float: left;
@@ -296,15 +301,16 @@ main section.example {
       text-decoration: none;
       font-size: 14px;
       font-weight: 800;
+      letter-spacing: 1px;
 
       &.next {
-        padding-right: 12px;
+        padding-right: 16px;
         background: url(../img/icon-chevron.png) no-repeat right;
         background-size: 7px 10px;
       }
 
       &.prev {
-        padding-left: 12px;
+        padding-left: 16px;
         background: url(../img/icon-chevron-left.png) no-repeat left;
         background-size: 7px 10px;
       }
