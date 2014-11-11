@@ -466,13 +466,13 @@ footer {
     @include column-count(2);
   }
 
-  main section.example {
+  .hasJS main section.example {
 
     h4 {
       display: none;
     }
 
-    > div.example {
+    div.example {
       display: none;
 
       &.current {
