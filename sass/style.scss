@@ -297,12 +297,15 @@ main section.example {
       float: right;
     }
 
-    a {
+    button {
+      background: none;
+      border: none;
       text-transform: uppercase;
       text-decoration: none;
       font-size: 14px;
       font-weight: 800;
       letter-spacing: 1px;
+      color: $link-colour;
 
       &.next {
         padding-right: 16px;
