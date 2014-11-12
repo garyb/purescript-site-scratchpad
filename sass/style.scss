@@ -4,16 +4,20 @@
 
 $link-colour: #c4953a;
 
-html, body {
+html {
   margin: 0;
   padding: 0;
-  font-family: Roboto, sans-serif;
-  font-size: 18px;
   min-width: 320px;
+  height: 100%;
 }
 
 body {
+  position: relative;
   background: #f5f5f5;
+  font: 18px Roboto, sans-serif;
+  box-sizing: border-box;
+  padding-bottom: 185px;
+  min-height: 100%;
 
   &.home {
     background: #fff;
@@ -385,8 +389,11 @@ ul.cards {
 /* ------------------------------------------------------------------------- */
 
 footer {
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0px;
   padding: 20px 30px 50px;
-  overflow: hidden;
+  width: 100%;
 
   nav {
     ul {
@@ -441,21 +448,29 @@ footer {
 
 @media (min-width: 525px) {
 
-  header nav h2 {
-    display: none;
+  body {
+    padding-bottom: 80px;
   }
 
-  header nav ul {
-    display: block;
+  header nav {
+    h2 {
+      display: none;
+    }
+
+    ul {
+      display: block;
+    }
   }
 
-  footer nav ul {
-    float: right;
-  }
+  footer nav {
+    ul {
+      float: right;
 
-  footer nav ul.external {
-    float: left;
-    margin-left: -25px;
+      &.external {
+        float: left;
+        margin-left: -25px;
+      }
+    }
   }
 
   nav ul li {
@@ -510,7 +525,7 @@ footer {
     padding: 0px 10px 60px;
   }
 
-  .home main section+section {
+  .home main section+section, main section {
     padding: 60px 10px;
   }
 
@@ -540,7 +555,7 @@ footer {
     padding: 0px 10px 70px;
   }
 
-  .home main section+section {
+  .home main section+section, main section {
     padding: 70px 10px;
   }
 
