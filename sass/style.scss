@@ -540,6 +540,10 @@ footer {
     padding: 60px 10px;
   }
 
+  main section.intro h2 {
+    font-size: 28px;
+  }
+
   ul.cards li {
     margin-top: 30px;
   }
@@ -581,10 +585,6 @@ footer {
   main section.intro {
     margin: 30px auto;
     max-width: 800px;
-
-    h2 {
-      font-size: 28px;
-    }
   }
 
   main section > h2,
@@ -625,6 +625,10 @@ footer {
       top: 67px;
       right: 100px;
     }
+  }
+
+  main section.intro h2 {
+    font-size: 34px;
   }
 
   footer nav ul {
