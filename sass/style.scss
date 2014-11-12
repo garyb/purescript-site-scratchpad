@@ -85,16 +85,23 @@ header {
   height: 110px;
 
   h1 {
+    display: block;
     position: absolute;
     top: 38px;
     left: 30px;
-    width: 54px;
-    height: 34px;
-    overflow: hidden;
-    text-indent: 100%;
-    background: url(../img/logo.png);
-    background-size: 54px 34px;
     margin: 0;
+
+    a {
+      display: block;
+      width: 54px;
+      height: 34px;
+      overflow: hidden;
+      text-indent: 100%;
+      background: url(../img/logo.png);
+      background-size: 54px 34px;
+      opacity: 1;
+    }
+
   }
 
   a {
@@ -595,9 +602,11 @@ footer {
     h1 {
       top: 54px;
       left: 100px;
-      width: 68px;
-      height: 41px;
-      background-size: 68px 41px;
+      a {
+        width: 68px;
+        height: 41px;
+        background-size: 68px 41px;
+      }
     }
 
     nav {
