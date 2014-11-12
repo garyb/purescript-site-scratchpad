@@ -115,7 +115,7 @@ header {
 
     h2 {
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 700;
       cursor: pointer;
       margin: 0;
     }
@@ -506,6 +506,14 @@ footer {
 
 @media (min-width: 676px) {
 
+  main section+section {
+    padding: 0px 10px 60px;
+  }
+
+  .home main section+section {
+    padding: 60px 10px;
+  }
+
   main section > p {
     margin-left: auto;
     margin-right: auto;
@@ -527,6 +535,14 @@ footer {
 }
 
 @media (min-width: 876px) {
+
+  main section+section {
+    padding: 0px 10px 70px;
+  }
+
+  .home main section+section {
+    padding: 70px 10px;
+  }
 
   main section.intro {
     margin: 30px auto;
@@ -617,7 +633,6 @@ footer {
       ul {
         display: block;
         font-size: 24px;
-        font-weight: 300;
         text-transform: none;
         margin-top: 100px;
 
