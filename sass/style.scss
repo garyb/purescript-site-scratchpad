@@ -32,7 +32,7 @@ pre, code {
 
 pre {
 
-  .kr, .nn, .nf {
+  .kr, .nn, .nf, .kt {
     font-weight: bold;
   }
 
@@ -44,7 +44,7 @@ pre {
     color: $link-colour;
   }
 
-  .nn {
+  .nn, .kt {
     color: #445588;
   }
 
